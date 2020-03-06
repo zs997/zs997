@@ -237,5 +237,5 @@ v[m][i][j]←cu
 #  参考文献
 
 [1]Arjan S. Dijkstra,Kees Jan Roodbergen. Exact route-length formulas and a storage location assignment heuristic for picker-to-parts warehouses[J]. Transportation Research Part E,2017,102.
-
+[2] 源代码地址：https://github.com/zs997/warehouse
 
