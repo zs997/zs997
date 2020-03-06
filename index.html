@@ -1,0 +1,33 @@
+---
+layout: page
+description: "人最宝贵的是生命，生命对于每个人只有一次，人的一生应该这样度过：当回忆往事的时候，他不会因为虚度年华而悔恨，也不会因为碌碌无为而羞愧。"
+
+---
+
+
+<span style="font-size:18px;">
+
+
+
+<div class="home">
+
+  <h1 class="page-heading">博文目录</h1>
+
+  <ul class="post-list">
+    {% for post in site.posts %}
+      <li>
+       
+
+        <h2>
+          <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+        </h2>
+		 <span class="post-meta">{{ post.date | date: "%b %-d, %Y" }}</span>
+		<!-- <h2>
+          {{ post.excerpt }}
+        </h2> -->
+      </li>
+    {% endfor %}
+  </ul>
+  <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | prepend: site.baseurl }}">via RSS</a></p>
+
+</div></span>

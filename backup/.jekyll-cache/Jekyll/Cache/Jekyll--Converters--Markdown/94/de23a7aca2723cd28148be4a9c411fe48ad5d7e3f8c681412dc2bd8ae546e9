@@ -1,0 +1,100 @@
+I"�	<p>欢迎使用 <strong>{小书匠}(xiaoshujiang)编辑器</strong>，您可以通过 <code class="highlighter-rouge">小书匠主按钮&gt;模板</code> 里的模板管理来改变新建文章的内容。</p>
+<h1 id="一级标题">一级标题</h1>
+
+<h2 id="二级标题">二级标题</h2>
+
+<h3 id="三级标题">三级标题</h3>
+<h3 id="无序列表">无序列表</h3>
+<ul>
+  <li>1</li>
+  <li>2</li>
+  <li>3
+                      ·</li>
+  <li>1</li>
+  <li>2</li>
+  <li>3
+               ·</li>
+  <li>1</li>
+  <li>2</li>
+  <li>3</li>
+</ul>
+
+<blockquote>
+  <p>这是一段引用</p>
+</blockquote>
+
+<hr />
+
+<p>可以作为分割线   -&gt;  ***  —</p>
+
+<hr />
+
+<h3 id="行内式链接">行内式链接</h3>
+<p><a href="https://www.baidu.com/">百度</a></p>
+
+<p>### 参数式
+<a href="https://www.baidu.com/" title="参数">百度</a></p>
+
+<p>### 图片
+<img src="https://www.zybuluo.com/static/img/logo.png" alt="图片名称" /></p>
+
+<h3 id="使用代码">使用代码</h3>
+<p>单行使用 <code class="highlighter-rouge">内容</code> [ 反引号，键盘中esc下面那个键/英文状态下 ]
+<code class="highlighter-rouge">int  i = 0;</code></p>
+
+<p>多行使用 <code class="highlighter-rouge">int u = 0; for</code> 注意：这里是是前后三个 反引号</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//this is a code template
+void main(){
+	cout &lt;&lt; "hello world";
+	return;
+}
+
+</code></pre></div></div>
+
+<p><em>字体倾斜</em>              <br />
+  <em>字体倾斜</em>
+  <strong>字体加粗</strong>            <br />
+  <strong>字体加粗</strong>
+  <del>字体删除</del> 
+  <del>删除</del></p>
+
+<p>非代码示例：
+    ` ` `
+      $ sudo apt-get install vim-gnome
+    ` ` `</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>JavaScript 示例： ``` javascript /**
+</code></pre></div></div>
+
+<p>nth element in the fibonacci series.
+*/
+function fib(n) {
+var a = 1, b = 1;
+return a;
+}
+document.write(fib(10));</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+| 项目        | 价格    |  数量   |
+| --------    | -----: | :----:  |
+| 计算机      | \$1600  |   5    |
+| 手机        |   \$12  |   12   |
+| 管线        |    \$1  |   234  |
+
+: 是对齐方向
+
+| 学号   | 姓名  | 年级  |
+| ------  |  :----:|:-----:|
+|1502054336| zs | 15020543|
+
+
+```java
+/*
+java 代码示例
+*/
+public static void main(String args[ ]){
+	System.out.println("hello world");
+}
+</code></pre></div></div>
+:ET
