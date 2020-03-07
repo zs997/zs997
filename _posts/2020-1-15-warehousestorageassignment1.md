@@ -15,12 +15,12 @@ tags:
    各位读者大家好，今天ZS给大家分享使用动态规划算法求解库位分配问题。算法的主要思想来自于论文：Exact route-length formulas and a storage location assignment heuristic for picker-to-parts warehouses。动态规划算法一直以来都是让人很摸不到头脑的算法，小编刚开始写这个程序的时候，真是写到崩溃，但是要始终相信社会主义核心价值观，只要思想不滑坡，就可以捋顺思路！言归正传，上！
 # 动态规划算法典型算例
 
-![图1 动态规划求解最短路径](https://upload-images.jianshu.io/upload_images/21591548-42073e55c14fc988.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![图1 动态规划求解最短路径](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8yMTU5MTU0OC00MjA3M2U1NWMxNGZjOTg4LnBuZw?x-oss-process=image/format,png)
    动态规划算法的核心思想是通过子问题的最优解求解出原问题的最优解。图1 所示，求从A到D的最短路径，如果已知从A到C1的最短路径Pac1，从A到C2的最短路径Pac2，从A到C3的最短路径Pac3，从A到C4的最短路径Pac4。那么从A到D的最短路径是 				               min{Pac1+C1D,Pac2+C2D,Pac3+C3D,Pac4+C4D}
 这样逐步向前推进，就可以算得最短路径。
 
 # 库位分配问题简介
-![图2 仓库布局](https://upload-images.jianshu.io/upload_images/21591548-5a26e2904bea415e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![图2 仓库布局](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8yMTU5MTU0OC01YTI2ZTI5MDRiZWE0MTVlLnBuZw?x-oss-process=image/format,png)
 	如图2所示，纵向通道两边是货架，用于存货。前后两个横通道连接各货架。纵向通道货架左右对称，入库出库无差别，认为两者属于同一列。
 ###  简化处理
 *    	按需求频率由大到小将货物分为A,B,C三类。（需求频率：给定订单，需要各类货物的占比）
@@ -29,34 +29,33 @@ tags:
 *   每一个库位匹配合理的货物类型
 # 概率假设
 * 给定拣货订单，拣选每个A的概率都相等，B,C同理。
-![](https://upload-images.jianshu.io/upload_images/21591548-0f3904bdbce0f56a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8yMTU5MTU0OC0wZjM5MDRiZGJjZTBmNTZhLnBuZw?x-oss-process=image/format,png)
 * 每个货物都有一定概率被拣选，将货物分配到库位中，也就确定了在某处拣货的概率。pij是本算法中比较关键的变量。
 * 货物在仓库中的分布优化问题 ------>>>> 仓库中的拣货概率分布问题
 # 评价指标-平均拣货路径长度
 ![图3 以返回式拣货策略
 为例（共四种）](https://upload-images.jianshu.io/upload_images/21591548-3c14c8470b426f2d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
-![](https://upload-images.jianshu.io/upload_images/21591548-54baa6a23e87268a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-![](https://upload-images.jianshu.io/upload_images/21591548-4669e85c4a7c1d3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-![](https://upload-images.jianshu.io/upload_images/21591548-3258e882c7aeebe7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-![](https://upload-images.jianshu.io/upload_images/21591548-6729623bdfe4f2aa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-![](https://upload-images.jianshu.io/upload_images/21591548-5c1d34e42f1be3a5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
-![图 4 目标函数](https://upload-images.jianshu.io/upload_images/21591548-82765da695cad262.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8yMTU5MTU0OC0zMjU4ZTg4MmM3YWVlYmU3LnBuZw?x-oss-process=image/format,png)
+
+![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8yMTU5MTU0OC02NzI5NjIzYmRmZTRmMmFhLnBuZw?x-oss-process=image/format,png)
+
+![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8yMTU5MTU0OC01YzFkMzRlNDJmMWJlM2E1LnBuZw?x-oss-process=image/format,png)
+
+
+![图 4 目标函数](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8yMTU5MTU0OC04Mjc2NWRhNjk1Y2FkMjYyLnBuZw?x-oss-process=image/format,png)
 图4以图3中的拣货路径策略为例，求解给定一概率分布下，平均拣货路径长度，以此作为目标函数，优化仓库中货物的类别分布。
 
 #  动态规划求解库位分配问题
 以4×4格局仓库，A,B两种货物说明动态规划算法：
 用v[m][na][nb]表示子问题，将货物na,nb分配到前m通道。
 
-![](https://upload-images.jianshu.io/upload_images/21591548-cff69ffe28525f5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8yMTU5MTU0OC1jZmY2OWZmZTI4NTI1ZjVlLnBuZw?x-oss-process=image/format,png)
 
-![图5 动态规划求解库位分配问题](https://upload-images.jianshu.io/upload_images/21591548-7208ec8efa695a91.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![图5 动态规划求解库位分配问题](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8yMTU5MTU0OC03MjA4ZWM4ZWZhNjk1YTkxLnBuZw?x-oss-process=image/format,png)
 
 ```c++
 /*
@@ -228,9 +227,9 @@ v[m][i][j]←cu
 	}
 ```
 #  实验结果
-![图6 输入数据示例](https://upload-images.jianshu.io/upload_images/21591548-f57ee9fd1d07913d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![图6 输入数据示例](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8yMTU5MTU0OC1mNTdlZTlmZDFkMDc5MTNkLnBuZw?x-oss-process=image/format,png)
 
-![图7 输出数据示例](https://upload-images.jianshu.io/upload_images/21591548-f32307f243702209.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![图7 输出数据示例](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8yMTU5MTU0OC1mMzIzMDdmMjQzNzAyMjA5LnBuZw?x-oss-process=image/format,png)
 
 在图7 中每一行代表仓库的一条通道。第1列是通道编号，第2、3、4列是各类货物的数目，最后一列是评价值。
 
@@ -238,4 +237,5 @@ v[m][i][j]←cu
 
 [1]Arjan S. Dijkstra,Kees Jan Roodbergen. Exact route-length formulas and a storage location assignment heuristic for picker-to-parts warehouses[J]. Transportation Research Part E,2017,102.
 [2] 源代码地址：https://github.com/zs997/warehouse
+
 
