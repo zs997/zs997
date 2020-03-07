@@ -33,10 +33,9 @@ tags:
 * 每个货物都有一定概率被拣选，将货物分配到库位中，也就确定了在某处拣货的概率。pij是本算法中比较关键的变量。
 * 货物在仓库中的分布优化问题 ------>>>> 仓库中的拣货概率分布问题
 # 评价指标-平均拣货路径长度
+
 ![图3 以返回式拣货策略
-为例（共四种）](https://upload-images.jianshu.io/upload_images/21591548-3c14c8470b426f2d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
-
+为例（共四种）](https://img-blog.csdnimg.cn/20200307125138618.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MDMwMDcwMg==,size_16,color_FFFFFF,t_70)
 
 
 ![](https://imgconvert.csdnimg.cn/aHR0cHM6Ly91cGxvYWQtaW1hZ2VzLmppYW5zaHUuaW8vdXBsb2FkX2ltYWdlcy8yMTU5MTU0OC0zMjU4ZTg4MmM3YWVlYmU3LnBuZw?x-oss-process=image/format,png)
