@@ -1,0 +1,36 @@
+I"�<h1 id="题目描述">题目描述</h1>
+<p>给定一个二叉树和一个值sum，判断是否有从<strong>根节点到叶子节点</strong>的节点值之和等于sum的路径，
+例如：
+给出如下的二叉树，sum=22，
+              5↵             / ↵            4   8↵           /   / ↵          11  13  4↵         /      / ↵        7    2  5   1
+返回true，因为存在一条路径5-&gt;4-&gt;11-&gt;2的节点值之和为22</p>
+<h1 id="分析">分析</h1>
+<ul>
+  <li>从根节点到叶子节点的路径。可以使用递归的方式。</li>
+  <li>从根节点出发，向子节点迭代的时候，sum减去root的值。</li>
+  <li>判断该节点是不是叶子节点，如果是，比较sum和节点的值。</li>
+  <li>如果不是叶子节点，向左子树或者右子树递归。
+    <h1 id="java-代码">java 代码</h1>
+    <p>```java
+/**</p>
+  </li>
+  <li>Definition for binary tree</li>
+  <li>public class TreeNode {</li>
+  <li>int val;</li>
+  <li>TreeNode left;</li>
+  <li>TreeNode right;</li>
+  <li>TreeNode(int x) { val = x; }</li>
+  <li>}
+ */
+public class Solution {
+ public boolean hasPathSum(TreeNode root, int sum) {     <br />
+     if(root == null){return false;}
+     if(root.left == null &amp;&amp; root.right == null &amp;&amp; root.val == sum){
+         return true;
+     }
+     return hasPathSum(root.left,sum-root.val) || hasPathSum(root.right,sum-root.val); <br />
+ }<br />
+}
+```</li>
+</ul>
+:ET

@@ -1,0 +1,50 @@
+I"�"<h1 id="题目描述">题目描述</h1>
+<p>给出一个仅包含数字的字符串，给出所有可能的字母组合。
+数字到字母的映射方式如下:(就像电话上数字和字母的映射一样)
+<img src="https://img-blog.csdnimg.cn/20200315223337792.png" alt="" />
+Input:Digit string “23”Output:[“ad”, “ae”, “af”, “bd”, “be”, “bf”, “cd”, “ce”, “cf”].
+注意：虽然上述答案是按字典序排列的，但你的答案可以按任意的顺序给出</p>
+<h1 id="分析">分析</h1>
+<ul>
+  <li>深度优先搜索</li>
+  <li>遍历
+    <h1 id="java-代码">java 代码</h1>
+    <div class="language-java highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">java.util.*</span><span class="o">;</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">Solution</span> <span class="o">{</span>
+  <span class="kd">public</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="nf">letterCombinations</span><span class="o">(</span><span class="nc">String</span> <span class="n">digits</span><span class="o">)</span> <span class="o">{</span>
+      <span class="nc">ArrayList</span> <span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">res</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;();</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">digits</span> <span class="o">==</span> <span class="kc">null</span> <span class="o">||</span> <span class="n">digits</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">==</span> <span class="mi">0</span><span class="o">){</span>
+          <span class="n">res</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+          <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+      <span class="o">}</span>
+      <span class="nc">HashMap</span> <span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span><span class="kt">char</span> <span class="o">[]&gt;</span> <span class="n">map</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+      <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="sc">'2'</span><span class="o">,</span><span class="k">new</span> <span class="kt">char</span><span class="o">[]{</span><span class="sc">'a'</span><span class="o">,</span><span class="sc">'b'</span><span class="o">,</span><span class="sc">'c'</span><span class="o">});</span>
+      <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="sc">'3'</span><span class="o">,</span><span class="k">new</span> <span class="kt">char</span><span class="o">[]{</span><span class="sc">'d'</span><span class="o">,</span><span class="sc">'e'</span><span class="o">,</span><span class="sc">'f'</span><span class="o">});</span>
+      <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="sc">'4'</span><span class="o">,</span><span class="k">new</span> <span class="kt">char</span><span class="o">[]{</span><span class="sc">'g'</span><span class="o">,</span><span class="sc">'h'</span><span class="o">,</span><span class="sc">'i'</span><span class="o">});</span>
+      <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="sc">'5'</span><span class="o">,</span><span class="k">new</span> <span class="kt">char</span><span class="o">[]{</span><span class="sc">'j'</span><span class="o">,</span><span class="sc">'k'</span><span class="o">,</span><span class="sc">'l'</span><span class="o">});</span>
+      <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="sc">'6'</span><span class="o">,</span><span class="k">new</span> <span class="kt">char</span><span class="o">[]{</span><span class="sc">'m'</span><span class="o">,</span><span class="sc">'n'</span><span class="o">,</span><span class="sc">'o'</span><span class="o">});</span>
+      <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="sc">'7'</span><span class="o">,</span><span class="k">new</span> <span class="kt">char</span><span class="o">[]{</span><span class="sc">'p'</span><span class="o">,</span><span class="sc">'q'</span><span class="o">,</span><span class="sc">'r'</span><span class="o">,</span><span class="sc">'s'</span><span class="o">});</span>
+      <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="sc">'8'</span><span class="o">,</span><span class="k">new</span> <span class="kt">char</span><span class="o">[]{</span><span class="sc">'t'</span><span class="o">,</span><span class="sc">'u'</span><span class="o">,</span><span class="sc">'v'</span><span class="o">});</span>
+      <span class="n">map</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="sc">'9'</span><span class="o">,</span><span class="k">new</span> <span class="kt">char</span><span class="o">[]{</span><span class="sc">'w'</span><span class="o">,</span><span class="sc">'x'</span><span class="o">,</span><span class="sc">'y'</span><span class="o">,</span><span class="sc">'z'</span><span class="o">});</span>
+      <span class="n">helper</span><span class="o">(</span><span class="s">""</span><span class="o">,</span><span class="mi">0</span><span class="o">,</span><span class="n">digits</span><span class="o">,</span><span class="n">res</span><span class="o">,</span><span class="n">map</span><span class="o">);</span>
+        
+      <span class="k">return</span> <span class="n">res</span><span class="o">;</span>
+  <span class="o">}</span>
+    
+  <span class="kd">public</span> <span class="kt">void</span>  <span class="nf">helper</span><span class="o">(</span><span class="nc">String</span> <span class="n">curr</span><span class="o">,</span><span class="kt">int</span> <span class="n">currIndex</span><span class="o">,</span><span class="nc">String</span> <span class="n">digits</span><span class="o">,</span><span class="nc">ArrayList</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">&gt;</span> <span class="n">res</span><span class="o">,</span><span class="nc">HashMap</span><span class="o">&lt;</span><span class="nc">Character</span><span class="o">,</span><span class="kt">char</span> <span class="o">[]&gt;</span> <span class="n">map</span><span class="o">){</span>
+      <span class="k">if</span><span class="o">(</span><span class="n">currIndex</span> <span class="o">==</span> <span class="n">digits</span><span class="o">.</span><span class="na">length</span><span class="o">()){</span>
+          <span class="n">res</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">curr</span><span class="o">);</span>
+      <span class="o">}</span><span class="k">else</span><span class="o">{</span>
+          <span class="kt">char</span> <span class="n">c</span> <span class="o">=</span> <span class="n">digits</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">currIndex</span><span class="o">);</span>
+          <span class="k">if</span><span class="o">(</span><span class="n">map</span><span class="o">.</span><span class="na">containsKey</span><span class="o">(</span><span class="n">c</span><span class="o">)){</span>
+              <span class="k">for</span><span class="o">(</span><span class="kt">char</span> <span class="n">cc</span> <span class="o">:</span> <span class="n">map</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">c</span><span class="o">)){</span>
+                  <span class="n">helper</span><span class="o">(</span><span class="n">curr</span><span class="o">+</span><span class="n">cc</span><span class="o">,</span><span class="n">currIndex</span><span class="o">+</span><span class="mi">1</span><span class="o">,</span><span class="n">digits</span><span class="o">,</span><span class="n">res</span><span class="o">,</span><span class="n">map</span><span class="o">);</span>
+              <span class="o">}</span>
+          <span class="o">}</span>
+      <span class="o">}</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div>    </div>
+  </li>
+</ul>
+:ET

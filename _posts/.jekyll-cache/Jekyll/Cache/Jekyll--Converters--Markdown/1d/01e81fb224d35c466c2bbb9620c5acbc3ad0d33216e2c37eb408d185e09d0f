@@ -1,0 +1,58 @@
+I"�<h1 id="题目描述">题目描述</h1>
+<p>格雷码是一种二进制编码系统，如果任意两个相邻的代码只有一位二进制数不同，则称这种编码为格雷码（Gray Code）。
+给定一个非负整数n，表示代码的位数，打印格雷码的序列。格雷码序列必须以0开头。
+例如：给定n=2，返回[0,1,3,2]. 格雷码的序列为：
+00 - 0↵01 - 1↵11 - 3↵10 - 2
+注意：
+对于一个给定的n，格雷码的序列不一定是唯一的，
+例如：根据题目描述，[0,2,3,1]也是一个有效的格雷码序列</p>
+<h1 id="分析">分析</h1>
+<ul>
+  <li>因为同一层的节点具有指向关系，可以使用树的按层遍历。</li>
+  <li>层序遍历可以通过队列实现。
+    <h1 id="java-代码">java 代码</h1>
+    <p>```java
+/**</p>
+  </li>
+  <li>Definition for binary tree with next pointer.</li>
+  <li>public class TreeLinkNode {</li>
+  <li>int val;</li>
+  <li>TreeLinkNode left, right, next;</li>
+  <li>TreeLinkNode(int x) { val = x; }</li>
+  <li>}
+ */</li>
+</ul>
+
+<p>import java.util.LinkedList;
+import java.util.Queue;
+public class Solution {
+   public void connect(TreeLinkNode root) {
+        if(root == null){
+            return;
+        }
+        Queue<TreeLinkNode> queue = new LinkedList&lt;&gt;();
+        queue.offer(root);
+        TreeLinkNode tail = root;
+        while (!queue.isEmpty()){
+            //拿出队头
+            TreeLinkNode temp = queue.poll();
+            //插入左右节点
+            if(temp.left != null){
+                queue.offer(temp.left);
+            }
+            //插入左右节点
+            if(temp.right != null){
+                queue.offer(temp.right);
+            }
+            //判断是不是该层的最后节点
+            if(temp == tail){
+                //更新tail为下一层的最后
+                tail = ((LinkedList<TreeLinkNode>) queue).peekLast();
+            }else{
+                temp.next = queue.peek();
+            }
+        }
+    }
+}
+```</TreeLinkNode></TreeLinkNode></p>
+:ET
